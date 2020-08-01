@@ -43,7 +43,12 @@ SiteName    = "My Radar Site"; // tooltip of the marker
 // Enables KML overlay on map, UserMap must have a value below when "true"
 UserMapShow = true;            //true to show KML
 // KML to show, for example your rangeview.kml: 
-UserMap     = "https://github.com/tedsluis/dump1090/raw/master/exampledata/radar.kml";  // your KML URL (publicly available domain)
+//
+// Google Maps JS API caches KML files for quite a long time, 
+// so if you generate your rangeview.kml often - you have to cheat :)
+// To make Google Maps think that the KML file is new, we have to serve 
+// the file via PHP script that will add the date to the filename. 
+UserMap     = "https://cma.pl/rangeview.php?"+(new Date()).getTime();  // your KML URL (MUST BE publicly available domain as Google will access this file)
 
 // User heatmap (csv File)
 // Enables Heatmap on map
